@@ -84,7 +84,6 @@
         }
         .back-btn:hover { opacity: 1; }
         .back-btn svg { transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
-        /* При наведении крестик крутится */
         .back-btn:hover svg { transform: rotate(90deg) scale(1.1); }
 
         /* --- SCROLL REVEAL --- */
@@ -114,7 +113,6 @@
         .info-col p.value { font-size: 0.9rem; line-height: 1.5; text-transform: uppercase; }
         .info-col p.desc { font-size: 1.1rem; line-height: 1.6; color: #ccc; margin-bottom: 2rem; }
 
-        /* Кнопка перехода на лайв сайт */
         .live-btn {
             display: inline-flex; align-items: center; gap: 0.5rem;
             font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;
@@ -130,6 +128,7 @@
         .rotating-symbol {
             width: 50px; height: 50px; color: #fff; margin-bottom: 2rem; display: block;
             animation: spin 20s linear infinite; transform-origin: center center;
+            overflow: visible; /* ИСПРАВЛЕНИЕ ДЛЯ SVG */
         }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
@@ -175,7 +174,7 @@
         
         <div class="magnetic-wrap" data-hoverable="true">
             <a href="index.html" class="back-btn magnetic-inner" id="backBtn">
-                <span>Close</span>
+                <span data-i18n="closeBtn">Close</span>
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
                     <path d="M4 4L20 20M4 20L20 4"/>
                 </svg>
@@ -276,24 +275,24 @@
                         <rect x="6.06" y="45.43" width="2.51" height="14.61" transform="translate(-45.48 59.66) rotate(-89.57)"/>
                     </g>
                 </svg>
-                <p class="label">Project</p>
+                <p class="label" data-i18n="projectLabel">Project</p>
                 <p class="value">KINETICA</p>
             </div>
             <div class="info-col reveal-up d-2" style="padding-top: 5rem;">
-                <p class="label">Role</p>
-                <p class="value">Art Direction<br>Brand Identity<br>AI + Post-Production</p>
+                <p class="label" data-i18n="roleLabel">Role</p>
+                <p class="value" data-i18n="roleValue">Art Direction<br>Brand Identity<br>AI + Post-Production</p>
             </div>
             
             <div class="info-col reveal-up d-3" style="padding-top: 5rem;">
-                <p class="label">Overview</p>
-                <p class="desc">
+                <p class="label" data-i18n="overviewLabel">Overview</p>
+                <p class="desc" data-i18n="overviewDesc">
                     Позиционирование бунтарских биомеханических протезов как дома высокой моды. 
                     Проект исследует границу между эстетикой несовершенства и технологическим превосходством. 
                     Концепты созданы в открытом симбиозе нейросетей и профессиональной глубокой ретуши.
                 </p>
                 
                 <a href="https://raccoon4eg-maker.github.io/kinetica/" target="_blank" class="live-btn" data-hoverable="true">
-                    Visit live experience 
+                    <span data-i18n="visitBtn">Visit live experience</span> 
                     <svg viewBox="0 0 14 14" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path d="M1 13L13 1M13 1H4M13 1V10"/>
                     </svg>
@@ -306,21 +305,21 @@
                 <img src="girlkin2.png?q=80&w=1200&auto=format&fit=crop" class="parallax-img" alt="Kinetica Concept 1">
             </div>
             <div class="ed-text reveal-up">
-                <h3><span class="accent-font">the</span> Concept</h3>
-                <p>В основе философии Kinetica лежит идея того, что аугментация тела — это не скрытый медицинский процесс, а открытый акт самовыражения.</p>
-                <p>Мы уходим от привычного стерильного киберпанка в сторону <span style="color:#fff;">dark romanticism</span> и мрачного футуризма. Это не протезы для выживания, это аксессуары для тех, кто диктует свои правила.</p>
+                <h3 data-i18n="conceptTitle"><span class="accent-font">the</span> Concept</h3>
+                <p data-i18n="conceptP1">В основе философии Kinetica лежит идея того, что аугментация тела — это не скрытый медицинский процесс, а открытый акт самовыражения.</p>
+                <p data-i18n="conceptP2">Мы уходим от привычного стерильного киберпанка в сторону <span style="color:#fff;">dark romanticism</span> и мрачного футуризма. Это не протезы для выживания, это аксессуары для тех, кто диктует свои правила.</p>
             </div>
         </section>
 
         <section class="pull-quote reveal-up">
-            <h2>"Красота рождается на стыке <span class="accent-font">плоти и стали</span>, где несовершенство становится главным манифестом."</h2>
+            <h2 data-i18n="quote">"Красота рождается на стыке <span class="accent-font">плоти и стали</span>, где несовершенство становится главным манифестом."</h2>
         </section>
 
         <section class="editorial-block right-image">
             <div class="ed-text reveal-up">
-                <h3><span class="accent-font">visual</span> Language</h3>
-                <p>Формы вдохновлены природными структурами: позвонками, костями и экзоскелетами насекомых, но выполнены из тяжелого матового металла и композитов.</p>
-                <p>Холодный, почти хтонический цветокор подчеркивает премиальность бренда. Здесь нет неона — только сырой свет, глубокие тени и текстура бетона, создающая ощущение абсолютной реальности.</p>
+                <h3 data-i18n="visualTitle"><span class="accent-font">visual</span> Language</h3>
+                <p data-i18n="visualP1">Формы вдохновлены природными структурами: позвонками, костями и экзоскелетами насекомых, но выполнены из тяжелого матового металла и композитов.</p>
+                <p data-i18n="visualP2">Холодный, почти хтонический цветокор подчеркивает премиальность бренда. Здесь нет неона — только сырой свет, глубокие тени и текстура бетона, создающая ощущение абсолютной реальности.</p>
             </div>
             <div class="ed-image-wrapper">
                 <img src="firekin.png?q=80&w=1200&auto=format&fit=crop" class="parallax-img" alt="Kinetica Concept 2">
@@ -328,7 +327,7 @@
         </section>
 
         <div class="next-project">
-            <p class="label reveal-up">Next Project</p>
+            <p class="label reveal-up" data-i18n="nextLabel">Next Project</p>
             <div class="magnetic-wrap" data-hoverable="true">
                 <h2 class="magnetic-inner" onclick="window.location.href='#'" style="font-size: 8vw; text-transform: uppercase; font-weight: 400;">
                     Ghost on the <span class="accent-font" style="text-transform: lowercase;">road</span>
@@ -402,7 +401,7 @@
             }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
             revealElements.forEach(el => observer.observe(el));
 
-            // --- ВСЕ МАГНИТНЫЕ КНОПКИ (ВКЛЮЧАЯ КНОПКУ ЗАКРЫТИЯ) ---
+            // --- ВСЕ МАГНИТНЫЕ КНОПКИ ---
             const magnetics = document.querySelectorAll('.magnetic-wrap');
             magnetics.forEach(wrap => {
                 const inner = wrap.querySelector('.magnetic-inner');
@@ -430,6 +429,75 @@
                     setTimeout(() => { window.location.href = target; }, 600);
                 });
             }
+
+// --- MULTILINGUAL SUPPORT (LOCAL STORAGE) ---
+            const translations = {
+                ru: {
+                    closeBtn: "Close",
+                    projectLabel: "Project",
+                    roleLabel: "Role",
+                    roleValue: "Art Direction<br>Brand Identity<br>AI + Post-Production",
+                    overviewLabel: "Overview",
+                    overviewDesc: "Позиционирование бунтарских биомеханических протезов как дома высокой моды. Проект исследует границу между эстетикой несовершенства и технологическим превосходством. Концепты созданы в открытом симбиозе нейросетей и профессиональной глубокой ретуши.",
+                    visitBtn: "Visit live experience",
+                    conceptTitle: "<span class='accent-font'>the</span> Concept",
+                    conceptP1: "В основе философии Kinetica лежит идея того, что аугментация тела — это не скрытый медицинский процесс, а открытый акт самовыражения.",
+                    conceptP2: "Мы уходим от привычного стерильного киберпанка в сторону <span style='color:#fff;'>dark romanticism</span> и мрачного футуризма. Это не протезы для выживания, это аксессуары для тех, кто диктует свои правила.",
+                    quote: "«Красота рождается на стыке <span class='accent-font'>плоти и стали</span>, где несовершенство становится главным манифестом.»",
+                    visualTitle: "<span class='accent-font'>visual</span> Language",
+                    visualP1: "Формы вдохновлены природными структурами: позвонками, костями и экзоскелетами насекомых, но выполнены из тяжелого матового металла и композитов.",
+                    visualP2: "Холодный, почти хтонический цветокор подчеркивает премиальность бренда. Здесь нет неона — только сырой свет, глубокие тени и текстура бетона, создающая ощущение абсолютной реальности.",
+                    nextLabel: "Next Project"
+                },
+                en: {
+                    closeBtn: "Close",
+                    projectLabel: "Project",
+                    roleLabel: "Role",
+                    roleValue: "Art Direction<br>Brand Identity<br>AI + Post-Production",
+                    overviewLabel: "Overview",
+                    overviewDesc: "Positioning rebellious biomechanical prosthetics as a high-fashion house. The project explores the boundary between the aesthetics of imperfection and technological supremacy. Concepts are created in an open symbiosis of neural networks and deep professional retouching.",
+                    visitBtn: "Visit live experience",
+                    conceptTitle: "<span class='accent-font'>the</span> Concept",
+                    conceptP1: "At the heart of Kinetica's philosophy lies the idea that body augmentation is not a hidden medical process, but an open act of self-expression.",
+                    conceptP2: "We move away from the usual sterile cyberpunk towards <span style='color:#fff;'>dark romanticism</span> and grim futurism. These are not prosthetics for survival; they are accessories for those who dictate their own rules.",
+                    quote: "«Beauty is born at the intersection of <span class='accent-font'>flesh and steel</span>, where imperfection becomes the main manifesto.»",
+                    visualTitle: "<span class='accent-font'>visual</span> Language",
+                    visualP1: "Forms are inspired by natural structures: vertebrae, bones, and insect exoskeletons, but made of heavy matte metal and composites.",
+                    visualP2: "The cold, almost chthonic color grading emphasizes the brand's premium nature. There is no neon here—only raw light, deep shadows, and concrete textures, creating a sense of absolute reality.",
+                    nextLabel: "Next Project"
+                },
+                de: {
+                    closeBtn: "Schließen",
+                    projectLabel: "Projekt",
+                    roleLabel: "Rolle",
+                    roleValue: "Art Direction<br>Brand Identity<br>AI + Post-Production",
+                    overviewLabel: "Überblick",
+                    overviewDesc: "Positionierung rebellischer biomechanischer Prothesen als Haute-Couture-Haus. Das Projekt erforscht die Grenze zwischen der Ästhetik der Unvollkommenheit und technologischer Überlegenheit. Die Konzepte entstehen in offener Symbiose von neuronalen Netzen und tiefer professioneller Retusche.",
+                    visitBtn: "Live-Erlebnis besuchen",
+                    conceptTitle: "<span class='accent-font'>das</span> Konzept",
+                    conceptP1: "Im Zentrum der Philosophie von Kinetica steht der Gedanke, dass Körpererweiterung kein verborgener medizinischer Prozess ist, sondern ein offener Akt der Selbstdarstellung.",
+                    conceptP2: "Wir bewegen uns weg vom üblichen sterilen Cyberpunk hin zu <span style='color:#fff;'>dark romanticism</span> und düsterem Futurismus. Dies sind keine Prothesen zum Überleben, es sind Accessoires für diejenigen, die ihre eigenen Regeln diktieren.",
+                    quote: "«Schönheit entsteht an der Schnittstelle von <span class='accent-font'>Fleisch und Stahl</span>, wo Unvollkommenheit zum Hauptmanifest wird.»",
+                    visualTitle: "<span class='accent-font'>visuelle</span> Sprache",
+                    visualP1: "Die Formen sind von natürlichen Strukturen inspiriert: Wirbeln, Knochen und Insekten-Exoskeletten, jedoch aus schwerem, mattem Metall und Verbundwerkstoffen gefertigt.",
+                    visualP2: "Das kalte, fast chthonische Color Grading unterstreicht den Premium-Charakter der Marke. Hier gibt es kein Neon – nur rohes Licht, tiefe Schatten und Betontexturen, die ein Gefühl absoluter Realität erzeugen.",
+                    nextLabel: "Nächstes Projekt"
+                }
+            };
+
+            // ИСПРАВЛЕННЫЙ КЛЮЧ: теперь он ищет 'portfolio-lang', как и на главной странице
+            const currentLang = localStorage.getItem('portfolio-lang') || 'ru'; 
+
+            function applyLanguage(lang) {
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+            }
+
+            applyLanguage(currentLang);
         });
     </script>
 </body>
