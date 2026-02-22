@@ -98,32 +98,30 @@
         .spacer { height: 100vh; width: 100%; background: transparent; }
         .glass-panel { background: rgba(5, 5, 5, 0.3); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-        /* --- АНИМАЦИЯ ПОЯВЛЕНИЯ ТЕКСТА (HERO MASK REVEAL) --- */
         header.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 2rem; }
         h1.hero-title { font-size: 11vw; line-height: 0.85; text-transform: uppercase; font-weight: 400; letter-spacing: -0.02em; color: #fff; }
         
-        .hero-title-line { 
-            display: block; 
-            overflow: hidden; 
-            padding-bottom: 0.25em; /* Даем место для выносного хвостика буквы g */
-            margin-bottom: -0.25em; /* Компенсируем этот отступ, чтобы строки остались плотными */
-        }
-        .hero-title-line span { 
-            display: block; 
-            transform: translateY(120%); /* Чуть увеличили сдвиг, чтобы текст точно спрятался за новую маску */
-            transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); 
-        }
+        .hero-title-line { display: block; overflow: hidden; padding-bottom: 0.25em; margin-bottom: -0.25em; }
+        .hero-title-line span { display: block; transform: translateY(120%); transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
         header.hero.loaded .hero-title-line span { transform: translateY(0); }
 
-        /* --- SCROLL REVEAL ДЛЯ ОСТАЛЬНЫХ БЛОКОВ --- */
+        /* --- SCROLL REVEAL --- */
         .reveal-up { opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .reveal-up.in-view { opacity: 1; transform: translateY(0); }
         .d-1 { transition-delay: 0.1s; } .d-2 { transition-delay: 0.2s; } .d-3 { transition-delay: 0.3s; }
 
+        /* --- НАВИГАЦИЯ И ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ --- */
         nav { position: fixed; top: 0; left: 0; width: 100%; padding: 2rem; display: flex; justify-content: space-between; align-items: flex-start; z-index: 100; mix-blend-mode: difference; }
         .logo { font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        .nav-right { display: flex; gap: 3rem; align-items: flex-start; }
         .menu a { display: block; text-align: right; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 0.5rem; transition: opacity 0.3s; color: #fff; }
         .menu a:hover { opacity: 0.5; }
+        
+        .lang-switcher { display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; text-align: right; }
+        .lang-btn { cursor: pointer; opacity: 0.4; transition: opacity 0.3s, font-weight 0.3s; text-transform: uppercase; }
+        .lang-btn:hover { opacity: 0.8; }
+        .lang-btn.active { opacity: 1; font-weight: bold; }
 
         .section-grid { display: grid; grid-template-columns: 30% 70%; padding: 6rem 2rem; }
         .section-label { font-size: 0.9rem; text-transform: uppercase; opacity: 0.7; margin-bottom: 2rem; }
@@ -135,32 +133,26 @@
         .trail-section { height: 80vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; border-bottom: 1px solid #333; }
         .trail-text { font-size: 9vw; line-height: 0.9; text-align: center; text-transform: uppercase; z-index: 10; pointer-events: none; mix-blend-mode: difference; color: #fff; }
 
-        /* Физика картинок из предыдущего шага */
         .trail-img { position: absolute; width: 300px; aspect-ratio: 3/4; object-fit: cover; pointer-events: none; z-index: 5; box-shadow: 0 10px 30px rgba(0,0,0,0.5); opacity: 0; transform: translate(-50%, -50%) scale(0.8); filter: grayscale(50%) contrast(1.2) brightness(0.8) blur(10px); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease, filter 0.4s ease; }
         .trail-img.active { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: grayscale(50%) contrast(1.2) brightness(0.8) blur(0px); }
         .trail-img.evaporate { opacity: 0; transform: translate(-50%, -50%) scale(0.6); filter: grayscale(50%) contrast(1.2) brightness(0.8) blur(25px); transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 1.5s ease, filter 1.5s ease; }
 
-        /* --- ТАКТИЛЬНЫЙ СПИСОК РАБОТ --- */
         .work-header { padding: 2rem; border-bottom: 1px solid #333; text-transform: uppercase; font-size: 0.9rem; opacity: 0.7; }
         .work-item { display: flex; align-items: center; padding: 3rem 2rem; border-bottom: 1px solid #333; cursor: pointer; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
         .work-item:hover { background-color: #dcdcdc; color: #000; }
         .work-num { font-size: 1rem; width: 100px; opacity: 0.5; }
         .work-info { flex-grow: 1; pointer-events: none; }
-        
-        /* Сдвиг заголовка при наведении */
         .work-title { font-size: 4vw; text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 400; transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
-        .work-item:hover .work-title { transform: translateX(20px); } /* Сдвиг */
-        
+        .work-item:hover .work-title { transform: translateX(20px); } 
         .work-cat { font-size: 1rem; text-transform: uppercase; opacity: 0.6; }
         .arrow { font-size: 3rem; transform: rotate(45deg); transition: transform 0.4s; pointer-events: none; }
         .work-item:hover .arrow { transform: rotate(0deg) translateX(10px); }
 
-        /* --- МАГНИТНЫЙ ФУТЕР --- */
         footer { padding: 8rem 2rem 6rem 2rem; }
         .footer-cta { font-size: 10vw; text-transform: uppercase; line-height: 0.9; margin-bottom: 6rem; }
         .footer-links { display: flex; gap: 3rem; text-transform: uppercase; font-size: 1.2rem; }
         
-        .magnetic-wrap { display: inline-block; padding: 1rem; cursor: pointer; margin: -1rem; /* Компенсация паддинга */ }
+        .magnetic-wrap { display: inline-block; padding: 1rem; cursor: pointer; margin: -1rem; }
         .magnetic-text { display: inline-block; will-change: transform; transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
 
         @media (max-width: 768px) {
@@ -172,6 +164,7 @@
             * { cursor: auto !important; }
             .custom-cursor { display: none; }
             .work-item:hover .work-title { transform: translateX(0); }
+            .nav-right { gap: 1.5rem; }
         }
     </style>
 </head>
@@ -199,10 +192,18 @@
 
     <nav>
         <div class="logo">Raccoon4eg_inc</div>
-        <div class="menu">
-            <a href="#work" data-hoverable="true">Work</a>
-            <a href="#about" data-hoverable="true">About</a>
-            <a href="#contact" data-hoverable="true">Contact</a>
+        
+        <div class="nav-right">
+            <div class="menu">
+                <a href="#work" data-hoverable="true" data-i18n="nav-work">Work</a>
+                <a href="#about" data-hoverable="true" data-i18n="nav-about">About</a>
+                <a href="#contact" data-hoverable="true" data-i18n="nav-contact">Contact</a>
+            </div>
+            <div class="lang-switcher">
+                <span class="lang-btn active" data-lang="ru" data-hoverable="true">RU</span>
+                <span class="lang-btn" data-lang="en" data-hoverable="true">EN</span>
+                <span class="lang-btn" data-lang="de" data-hoverable="true">DE</span>
+            </div>
         </div>
     </nav>
 
@@ -216,27 +217,27 @@
                 <span class="hero-title-line"><span class="accent-font" style="transition-delay: 0.2s;">& design</span></span>
             </h1>
             <div class="hero-footer reveal-up d-3" style="display: flex; justify-content: space-between; margin-top: auto; text-transform: uppercase; font-size: 0.85rem;">
-                <p>Based in Germany</p>
-                <p>Portfolio 2026</p>
+                <p data-i18n="hero-based">Based in Germany</p>
+                <p data-i18n="hero-portfolio">Portfolio 2026</p>
             </div>
         </header>
 
         <section id="about" class="section-grid glass-panel">
             <div class="column-left">
-                <p class="section-label reveal-up">01 — Profile</p>
+                <p class="section-label reveal-up" data-i18n="about-title">01 — Profile</p>
             </div>
             <div class="column-right">
-                <p class="bio-text reveal-up d-1">
+                <p class="bio-text reveal-up d-1" data-i18n="about-bio">
                     Графический дизайнер. Создаю визуальные системы, паки атмосферных постеров и комплексную айдентику для мероприятий (до и после ивентов).<br><br>
                     Работаю в открытом симбиозе с AI: концепты создаются нейросетью, а затем профессионально доводятся до идеала вручную в Photoshop. 
                     Исследую темы <span style="opacity:0.6">биомеханики</span>, <span class="accent-font" style="opacity:0.6; font-size: 1.1em;">русской хтони</span> и <span class="accent-font" style="opacity:0.6; font-size: 1.1em;">dark romanticism</span>.
                 </p>
-                <p class="section-label reveal-up d-2" style="margin-top: 4rem;">02 — Services</p>
+                <p class="section-label reveal-up d-2" style="margin-top: 4rem;" data-i18n="services-title">02 — Services</p>
                 <ul class="services-list">
-                    <li class="reveal-up d-1"><span class="accent-font" style="text-transform: lowercase; font-size: 1.2em;">art</span> Direction</li>
-                    <li class="reveal-up d-2">Event Identity</li>
-                    <li class="reveal-up d-3" id="btn-posters" data-hoverable="true" style="cursor: pointer;">Poster Packs</li>
-                    <li class="reveal-up d-3">Web Design</li>
+                    <li class="reveal-up d-1" data-i18n="serv-1"><span class="accent-font" style="text-transform: lowercase; font-size: 1.2em;">art</span> Direction</li>
+                    <li class="reveal-up d-2" data-i18n="serv-2">Event Identity</li>
+                    <li class="reveal-up d-3" id="btn-posters" data-hoverable="true" style="cursor: pointer;" data-i18n="serv-3">Poster Packs</li>
+                    <li class="reveal-up d-3" data-i18n="serv-4">Web Design</li>
                 </ul>
             </div>
         </section>
@@ -244,19 +245,19 @@
         <div class="solid-bg-section">
             
             <section id="trail" class="trail-section">
-                <h2 class="trail-text reveal-up">SHAPING<br><span class="accent-font" style="text-transform: lowercase;">aesthetics</span></h2>
+                <h2 class="trail-text reveal-up" data-i18n="trail-shaping">SHAPING<br><span class="accent-font" style="text-transform: lowercase;">aesthetics</span></h2>
             </section>
 
             <section id="work">
                 <div class="work-header reveal-up">
-                    <span>03 — Selected Works</span>
+                    <span data-i18n="work-title">03 — Selected Works</span>
                 </div>
                 
                 <div class="work-item reveal-up d-1" data-hoverable="true" id="project-kinetica">
                     <span class="work-num">01</span>
                     <div class="work-info">
                         <h3 class="work-title">KINETICA</h3>
-                        <p class="work-cat">Branding / Prosthetics / Diploma</p>
+                        <p class="work-cat" data-i18n="work-1-cat">Branding / Prosthetics / Diploma</p>
                     </div>
                     <div class="arrow">&nearr;</div>
                 </div>
@@ -265,7 +266,7 @@
                     <span class="work-num">02</span>
                     <div class="work-info">
                         <h3 class="work-title">GHOST ON THE ROAD</h3>
-                        <p class="work-cat">Interactive Poster / AR</p>
+                        <p class="work-cat" data-i18n="work-2-cat">Interactive Poster / AR</p>
                     </div>
                     <div class="arrow">&nearr;</div>
                 </div>
@@ -274,15 +275,15 @@
                     <span class="work-num">03</span>
                     <div class="work-info">
                         <h3 class="work-title">PLATO'S FORMS</h3>
-                        <p class="work-cat">Web Design / Educational</p>
+                        <p class="work-cat" data-i18n="work-3-cat">Web Design / Educational</p>
                     </div>
                     <div class="arrow">&nearr;</div>
                 </div>
             </section>
 
             <footer id="contact">
-                <p class="section-label reveal-up">04 — Contact</p>
-                <h2 class="footer-cta reveal-up d-1">Let's create<br><span class="accent-font" style="text-transform: lowercase;">something raw.</span></h2>
+                <p class="section-label reveal-up" data-i18n="contact-title">04 — Contact</p>
+                <h2 class="footer-cta reveal-up d-1" data-i18n="contact-cta">Let's create<br><span class="accent-font" style="text-transform: lowercase;">something raw.</span></h2>
                 
                 <div class="footer-links reveal-up d-2">
                     <div class="magnetic-wrap" data-hoverable="true">
@@ -301,7 +302,108 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // --- 0. ИНИЦИАЛИЗАЦИЯ ПЛАВНОГО СКРОЛЛА (LENIS) ---
+            // --- 0. СИСТЕМА ЛОКАЛИЗАЦИИ (ПЕРЕВОДА) ---
+            const translations = {
+                'ru': {
+                    'nav-work': 'Работы',
+                    'nav-about': 'Обо мне',
+                    'nav-contact': 'Контакты',
+                    'hero-based': 'Based in Germany', 
+                    'hero-portfolio': 'Портфолио 2026',
+                    'about-title': '01 — Профиль',
+                    'about-bio': 'Графический дизайнер. Создаю визуальные системы, паки атмосферных постеров и комплексную айдентику для мероприятий (до и после ивентов).<br><br>Работаю в открытом симбиозе с AI: концепты создаются нейросетью, а затем профессионально доводятся до идеала вручную в Photoshop. Исследую темы <span style="opacity:0.6">биомеханики</span>, <span class="accent-font" style="opacity:0.6; font-size: 1.1em;">русской хтони</span> и <span class="accent-font" style="opacity:0.6; font-size: 1.1em;">dark romanticism</span>.',
+                    'services-title': '02 — Услуги',
+                    'serv-1': '<span class="accent-font" style="text-transform: lowercase; font-size: 1.2em;">art</span> Direction',
+                    'serv-2': 'Айдентика ивентов',
+                    'serv-3': 'Наборы постеров',
+                    'serv-4': 'Веб-дизайн',
+                    'trail-shaping': 'СОЗДАЮ<br><span class="accent-font" style="text-transform: lowercase;">эстетику</span>',
+                    'work-title': '03 — Избранные работы',
+                    'work-1-cat': 'Брендинг / Протезирование / Диплом',
+                    'work-2-cat': 'Интерактивный постер / AR',
+                    'work-3-cat': 'Веб-дизайн / Образование',
+                    'contact-title': '04 — Контакты',
+                    'contact-cta': 'Создадим<br><span class="accent-font" style="text-transform: lowercase;">нечто необузданное.</span>'
+                },
+                'en': {
+                    'nav-work': 'Work',
+                    'nav-about': 'About',
+                    'nav-contact': 'Contact',
+                    'hero-based': 'Based in Germany',
+                    'hero-portfolio': 'Portfolio 2026',
+                    'about-title': '01 — Profile',
+                    'about-bio': 'Graphic designer. I create visual systems, atmospheric poster packs, and comprehensive identity for events.<br><br>I work in open symbiosis with AI: concepts are generated by neural networks, and then professionally brought to perfection manually in Photoshop. Exploring the themes of <span style="opacity:0.6">biomechanics</span>, <span class="accent-font" style="opacity:0.6; font-size: 1.1em;">slavic chthon</span> and <span class="accent-font" style="opacity:0.6; font-size: 1.1em;">dark romanticism</span>.',
+                    'services-title': '02 — Services',
+                    'serv-1': '<span class="accent-font" style="text-transform: lowercase; font-size: 1.2em;">art</span> Direction',
+                    'serv-2': 'Event Identity',
+                    'serv-3': 'Poster Packs',
+                    'serv-4': 'Web Design',
+                    'trail-shaping': 'SHAPING<br><span class="accent-font" style="text-transform: lowercase;">aesthetics</span>',
+                    'work-title': '03 — Selected Works',
+                    'work-1-cat': 'Branding / Prosthetics / Diploma',
+                    'work-2-cat': 'Interactive Poster / AR',
+                    'work-3-cat': 'Web Design / Educational',
+                    'contact-title': '04 — Contact',
+                    'contact-cta': 'Let\'s create<br><span class="accent-font" style="text-transform: lowercase;">something raw.</span>'
+                },
+                'de': {
+                    'nav-work': 'Arbeiten',
+                    'nav-about': 'Über mich',
+                    'nav-contact': 'Kontakt',
+                    'hero-based': 'Ansässig in Deutschland',
+                    'hero-portfolio': 'Portfolio 2026',
+                    'about-title': '01 — Profil',
+                    'about-bio': 'Grafikdesigner. Ich erstelle visuelle Systeme, atmosphärische Poster-Packs und umfassende Identitäten für Events.<br><br>Ich arbeite in offener Symbiose mit KI: Konzepte werden von neuronalen Netzen generiert und dann in Photoshop manuell perfektioniert. Ich erforsche die Themen <span style="opacity:0.6">Biomechanik</span>, <span class="accent-font" style="opacity:0.6; font-size: 1.1em;">slawische Chthon</span> und <span class="accent-font" style="opacity:0.6; font-size: 1.1em;">dunkle Romantik</span>.',
+                    'services-title': '02 — Dienstleistungen',
+                    'serv-1': '<span class="accent-font" style="text-transform: lowercase; font-size: 1.2em;">art</span> Direction',
+                    'serv-2': 'Event-Identität',
+                    'serv-3': 'Poster-Packs',
+                    'serv-4': 'Webdesign',
+                    'trail-shaping': 'FORMGEBUNG<br><span class="accent-font" style="text-transform: lowercase;">ästhetik</span>',
+                    'work-title': '03 — Ausgewählte Arbeiten',
+                    'work-1-cat': 'Branding / Prothetik / Diplom',
+                    'work-2-cat': 'Interaktives Poster / AR',
+                    'work-3-cat': 'Webdesign / Bildung',
+                    'contact-title': '04 — Kontakt',
+                    'contact-cta': 'Lass uns<br><span class="accent-font" style="text-transform: lowercase;">etwas Rohes erschaffen.</span>'
+                }
+            };
+
+            const langBtns = document.querySelectorAll('.lang-btn');
+            
+            function setLang(lang) {
+                // Замена текстов
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+                
+                // Смена активного класса
+                langBtns.forEach(btn => {
+                    if(btn.getAttribute('data-lang') === lang) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                // Сохранение выбора
+                localStorage.setItem('portfolio-lang', lang);
+            }
+
+            // Загружаем язык из памяти (или ставим русский по умолчанию)
+            const savedLang = localStorage.getItem('portfolio-lang') || 'ru';
+            setLang(savedLang);
+
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    setLang(btn.getAttribute('data-lang'));
+                });
+            });
+
+            // --- 0.5 ИНИЦИАЛИЗАЦИЯ ПЛАВНОГО СКРОЛЛА (LENIS) ---
             const lenis = new Lenis({
                 duration: 1.2,
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -339,7 +441,6 @@
                     setTimeout(() => { 
                         loader.style.transform = "translateY(-100%)"; 
                         lenis.start();
-                        // Как только уезжает шторка загрузки — выезжает красивый текст!
                         setTimeout(() => {
                             heroHeader.classList.add('loaded');
                         }, 400);
@@ -456,25 +557,33 @@
                     const rect = wrap.getBoundingClientRect();
                     const x = e.clientX - rect.left - rect.width / 2;
                     const y = e.clientY - rect.top - rect.height / 2;
-                    // Тянем текст за мышкой
                     text.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
                 });
                 wrap.addEventListener('mouseleave', () => {
-                    // Возвращаем на место
                     text.style.transform = `translate(0px, 0px)`;
                 });
             });
 
-            // --- 7. КОПИРОВАНИЕ EMAIL ---
+            // --- 7. КОПИРОВАНИЕ EMAIL (С ПЕРЕВОДОМ СТАТУСА) ---
             const emailLink = document.getElementById('copy-email');
             const yourEmail = 'raccoon4eg@gmail.com'; 
+            
+            const copyTexts = {
+                'ru': 'Скопировано!',
+                'en': 'Copied!',
+                'de': 'Kopiert!'
+            };
 
             if (emailLink) {
                 emailLink.addEventListener('click', (e) => {
                     e.preventDefault(); 
                     navigator.clipboard.writeText(yourEmail).then(() => {
                         const originalText = emailLink.innerText;
-                        emailLink.innerText = 'Copied!';
+                        
+                        // Получаем текущий активный язык для статуса "Скопировано"
+                        const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+                        emailLink.innerText = copyTexts[currentLang];
+                        
                         emailLink.style.color = '#fff'; 
                         setTimeout(() => {
                             emailLink.innerText = originalText;
@@ -484,10 +593,10 @@
                 });
             }
 
-            // --- 8. ПЕРЕХОД НА СТРАНИЦУ ПРОЕКТА ---
-            const kineticaBtn = document.getElementById('project-kinetica');
+            // --- 8. ПЕРЕХОДЫ НА СТРАНИЦЫ (С ЧЕРНОЙ ШТОРКОЙ) ---
             const pageTransition = document.getElementById('pageTransition');
 
+            const kineticaBtn = document.getElementById('project-kinetica');
             if (kineticaBtn) {
                 kineticaBtn.addEventListener('click', () => {
                     pageTransition.style.transform = 'translateY(0)';
@@ -495,7 +604,6 @@
                 });
             }
 
-            // --- НОВОЕ: К постерам (через Services) ---
             const postersBtn = document.getElementById('btn-posters');
             if (postersBtn) {
                 postersBtn.addEventListener('click', () => {
@@ -504,7 +612,6 @@
                 });
             }
 
-            // --- НОВОЕ: К постерам (через Work) ---
             const postersWorkBtn = document.getElementById('btn-posters-work');
             if (postersWorkBtn) {
                 postersWorkBtn.addEventListener('click', () => {
@@ -517,4 +624,3 @@
     </script>
 </body>
 </html>
-
